@@ -113,7 +113,7 @@ def main():
     if st.button("START"):
       st.warning(model.checkData())
       model.createDataReturn()
-      st.write("Stationality test")
+      st.write("Stationarity test")
       warn, ADF, p_value = model.checkStationarity()
       s1 = "ADF Statistic: " + str(ADF)
       s2 = "p-value: " + str(p_value)
