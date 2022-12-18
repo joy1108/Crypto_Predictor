@@ -19,7 +19,7 @@ class ArimaModel:
         max_day = self.my_dat.index.max()
         min_day = self.my_dat.index.min()
         if max_day - min_day <= timedelta(days=730):
-            return "The cryptocurrency is relatively new and the data available is less than two years, \
+            return "The cryptocurrency is relatively new or the data available is less than two years, \
             the model may not be reliable"
         else:
             return "The data is sufficient"
