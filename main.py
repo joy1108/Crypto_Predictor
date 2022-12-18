@@ -1,5 +1,5 @@
 import streamlit as st
-import plotly.graph_objects as go
+import plotly.graph_objects as graph
 from plotly.subplots import make_subplots
 import get_apidata
 import sys
@@ -54,24 +54,24 @@ def main():
                         vertical_spacing=0.03,
                         row_width=[0.2, 0.7])
 
-            fig.add_trace(go.Candlestick(x=data.index,
+            fig.add_trace(graph.Candlestick(x=data.index,
                                   open=data['open'],
                                   high=data['high'],
                                   low=data['low'],
                                   close=data['close'], name="OHLC"),
                   row=1, col=1)
-            fig.add_trace(go.Line(x=data.index, y=data['MA20'], name="MA20", line=dict(
+            fig.add_trace(graph.Line(x=data.index, y=data['MA20'], name="MA20", line=dict(
             color="purple",
             width=1)))
-            fig.add_trace(go.Line(x=data.index, y=data['MA50'], name="MA50", line=dict(
+            fig.add_trace(graph.Line(x=data.index, y=data['MA50'], name="MA50", line=dict(
             color="yellow",
             width=1.5)))
-            fig.add_trace(go.Line(x=data.index, y=data['MA100'], name="MA100", line=dict(
+            fig.add_trace(graph.Line(x=data.index, y=data['MA100'], name="MA100", line=dict(
             color="orange",
             width=2)))
 
             # Bar trace for volumes on 2nd row without legend
-            fig.add_trace(go.Bar(x=data.index, y=data['volume'], showlegend=False), row=2, col=1)
+            fig.add_trace(graph.Bar(x=data.index, y=data['volume'], showlegend=False), row=2, col=1)
 
             fig.update(layout_xaxis_rangeslider_visible=False)
 
@@ -142,9 +142,9 @@ def main():
       with col2:
         fig_plot = px.line(data, y="close", x=data.index)
         fig_plot.add_trace(
-            go.Scatter(x=pre.index, y=pre['Mean_Price'], line=dict(color="red"), name="forecast"))
-        fig_plot.add_trace(go.Scatter(x=pre.index, y=pre['Upper_Price'], line=dict(color="green", dash='dash'), name="upper", ))
-        fig_plot.add_trace(go.Scatter(x=pre.index, y=pre['Lower_Price'], line=dict(color="green", dash='dash'), name="lower", ))
+            graph.Scatter(x=pre.index, y=pre['Mean_Price'], line=dict(color="red"), name="forecast"))
+        fig_plot.add_trace(graph.Scatter(x=pre.index, y=pre['Upper_Price'], line=dict(color="green", dash='dash'), name="upper", ))
+        fig_plot.add_trace(graph.Scatter(x=pre.index, y=pre['Lower_Price'], line=dict(color="green", dash='dash'), name="lower", ))
         st.plotly_chart(fig_plot)
         
         st.markdown('---')

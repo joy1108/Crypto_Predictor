@@ -27,7 +27,8 @@ class ArimaModel:
     def checkStationarity(self):
         result = adfuller(self.dbData)
         if result[1] >= 0.05:
-            warning = "The P-value of the yield series is greater than 0.05, it is considered non-stationary and the model is not reliable."
+            warning = "The P-value of the yield series is greater than 0.05, \
+                it is considered non-stationary and the model is not reliable."
         else:
             warning = "This P-value is < 0.05. The Yield series is stationary"
 
